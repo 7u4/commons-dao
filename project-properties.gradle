@@ -9,7 +9,7 @@ project.ext {
     dependencyRepos = ["commons", "commons-rules", "commons-model", "commons-bom"]
     releaseMode = project.hasProperty("releaseMode")
     scriptsUrl = commonScriptsUrl + (releaseMode ? getProperty('scripts.version') : 'develop')
-    migrationsUrl = migrationsScriptsUrl + (releaseMode ? getProperty('migrations.version') : 'develop')
+    migrationsUrl = migrationsScriptsUrl + (releaseMode ? getProperty('migrations.version') : 'untested-status-impl')
     //TODO refactor with archive download
     testScriptsSrc = [
             (migrationsUrl + '/migrations/0_extensions.up.sql')                          : 'V001__extensions.sql',
@@ -59,6 +59,7 @@ project.ext {
             (migrationsUrl + '/migrations/44_remove_triggers.up.sql')                    : 'V044__remove_triggers.sql',
             (migrationsUrl + '/migrations/45_add_jobs_indexes.up.sql')                   : 'V045__add_jobs_indexes.sql',
             (migrationsUrl + '/migrations/46_job_values_bound.up.sql')                   : 'V046__job_values_bound.sql',
+            (migrationsUrl + '/migrations/48_untested_status.up.sql')                    : 'V048__untested_status.sql',
 
     ]
     excludeTests = [
