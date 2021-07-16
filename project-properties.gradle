@@ -60,6 +60,7 @@ project.ext {
             (migrationsUrl + '/migrations/45_add_jobs_indexes.up.sql')                   : 'V045__add_jobs_indexes.sql',
             (migrationsUrl + '/migrations/46_job_values_bound.up.sql')                   : 'V046__job_values_bound.sql',
             (migrationsUrl + '/migrations/48_untested_status.up.sql')                    : 'V048__untested_status.sql',
+            (migrationsUrl + '/migrations/49_untested_status_functions_update.up.sql')   : 'V049__untested_status_functions.sql',
 
     ]
     excludeTests = [
