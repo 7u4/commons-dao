@@ -314,4 +314,7 @@ public interface TestItemRepository extends ReportPortalRepository<TestItem, Lon
 			+ " ORDER BY t.start_time DESC, t.item_id DESC LIMIT 1 FOR UPDATE", nativeQuery = true)
 	Optional<Long> findLatestIdByTestCaseHashAndLaunchIdAndParentId(@Param("testCaseHash") Integer testCaseHash,
 			@Param("launchId") Long launchId, @Param("parentId") Long parentId);
+
+	@Query(value = "SELECT t.name FROM test_item t WHERE item_id IN (:ids) ORDER BY item_id", nativeQuery = true)
+	List<String> findNamesByIds(@Param("ids") Collection<Long> ids);
 }
