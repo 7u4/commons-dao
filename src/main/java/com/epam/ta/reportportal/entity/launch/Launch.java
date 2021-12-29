@@ -98,17 +98,12 @@ public class Launch implements Serializable {
 	@Type(type = "pqsql_enum")
 	private StatusEnum status;
 
-	@OneToMany(mappedBy = "launch", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(mappedBy = "launch", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<ItemAttribute> attributes = Sets.newHashSet();
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "launch_id", insertable = false, updatable = false)
 	private Set<Statistics> statistics = Sets.newHashSet();
-
-	@OneToMany(mappedBy = "launch", fetch = FetchType.LAZY, orphanRemoval = true)
-	private Set<Log> logs = Sets.newHashSet();
 
 	@Column(name = "approximate_duration")
 	private double approximateDuration;
@@ -243,14 +238,6 @@ public class Launch implements Serializable {
 
 	public StatusEnum getStatus() {
 		return status;
-	}
-
-	public Set<Log> getLogs() {
-		return logs;
-	}
-
-	public void setLogs(Set<Log> logs) {
-		this.logs = logs;
 	}
 
 	public void setStatus(StatusEnum status) {
