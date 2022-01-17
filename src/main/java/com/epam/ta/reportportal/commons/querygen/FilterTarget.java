@@ -769,6 +769,7 @@ public enum FilterTarget {
 					LOG.ITEM_ID,
 					LOG.LAUNCH_ID,
 					LOG.ATTACHMENT_ID,
+					LOG.CLUSTER_ID,
 					ATTACHMENT.ID,
 					ATTACHMENT.FILE_ID,
 					ATTACHMENT.THUMBNAIL_ID,

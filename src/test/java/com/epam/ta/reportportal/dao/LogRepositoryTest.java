@@ -56,7 +56,7 @@ class LogRepositoryTest extends BaseTest {
 	private TestItemRepository testItemRepository;
 
 	@Autowired
-	private LogRepository logRepository;
+	private LogRepositoryComplex logRepository;
 
 	@Test
 	void updateLaunchIdByLaunchId() {
