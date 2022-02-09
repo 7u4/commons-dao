@@ -14,7 +14,7 @@ import java.util.Objects;
  * LogMessage - entity for storing message part of log + some additional info.
  * indexName - is only prefix, real index name in Elasticsearch will be indexName + projectId.
  */
-@Document(indexName = "log_message_store-", type="log_message", createIndex = false)
+@Document(indexName = "log_message_store-", type="log_message", createIndex = false, refreshInterval = "10m")
 public class LogMessage implements Serializable {
 
     @Id
