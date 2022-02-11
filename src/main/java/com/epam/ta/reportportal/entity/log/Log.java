@@ -19,6 +19,8 @@ package com.epam.ta.reportportal.entity.log;
 import com.epam.ta.reportportal.entity.attachment.Attachment;
 import com.epam.ta.reportportal.entity.item.TestItem;
 import com.epam.ta.reportportal.entity.launch.Launch;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -37,7 +39,16 @@ import java.util.Objects;
 public class Log implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "log-generator")
+	@GenericGenerator(
+			name = "log-generator",
+			strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+			parameters = {
+					@Parameter(name = "sequence_name", value = "log_id_seq"),
+					@Parameter(name = "initial_value", value = "1"),
+					@Parameter(name = "increment_size", value = "1")
+			}
+	)
 	@Column(name = "id", unique = true, nullable = false, precision = 64)
 	private Long id;
 
